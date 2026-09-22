@@ -23,7 +23,7 @@ const { title, description, tags, href, image, imageAlt = "", featured = false }
       <h3 class:list={["display mt-3 text-ink", featured ? "text-3xl md:text-4xl" : "text-2xl"]}>
         <a href={href} class="hover:text-accent">{title}</a>
       </h3>
-      <p class="mt-4 max-w-xl leading-relaxed text-muted">{description}</p>
+      <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">{description}</p>
       <ul class="mt-5 flex flex-wrap gap-2">
         {tags.map((tag) => <li class="rounded-full bg-accent-soft px-3 py-1 text-xs text-accent">{tag}</li>)}
       </ul>

@@ -11,7 +11,7 @@ import MechanismFlow from "../../components/MechanismFlow.astro";
 import MetricChip from "../../components/MetricChip.astro";
 import CTAGroup from "../../components/CTAGroup.astro";
 import { profile } from "../../data/profile";
-import { findings, limitations, rigour } from "../../data/research";
+import { findings, limitations, rigour, thesisFigures } from "../../data/research";
 import { publicAssetExists } from "../../lib/assets";
 
 const video = "/videos/exp01-baseline.webp";
@@ -65,13 +65,13 @@ const thesisReady = publicAssetExists(profile.thesisPath);
   <section id="question" class="mx-auto max-w-6xl px-5 py-12 md:px-8">
     <SectionHeading title="The problem" lede="Task success is a group-level outcome. Welfare is experienced by individual agents." />
     <div class="mt-8 grid items-center gap-4 rounded-[1.6rem] border border-line bg-panel p-6 md:grid-cols-[1fr_auto_1fr_auto_1fr] md:p-8">
-      <p class="text-center text-base">Four vehicles</p>
+      <p class="text-center text-lg">Four vehicles</p>
       <span class="hidden text-accent md:block" aria-hidden="true">→</span>
-      <p class="text-center text-base">Successful merge</p>
+      <p class="text-center text-lg">Successful merge</p>
       <span class="hidden text-accent md:block" aria-hidden="true">→</span>
-      <p class="text-center text-base">Unequal mobility cost may still occur</p>
+      <p class="text-center text-lg">Unequal mobility cost may still occur</p>
     </div>
-    <p class="mt-6 max-w-3xl leading-relaxed text-muted">
+    <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
       A vehicle can visibly yield or brake without necessarily carrying the greatest requirement-relative mobility burden.
     </p>
   </section>
@@ -97,7 +97,7 @@ const thesisReady = publicAssetExists(profile.thesisPath);
     </div>
     <details class="mt-6 rounded-2xl border border-line bg-panel px-5 py-4">
       <summary class="cursor-pointer text-base font-medium">Technical formulation</summary>
-      <p class="mt-3 max-w-3xl text-base leading-relaxed text-muted">
+      <p class="mt-3 max-w-3xl text-lg leading-relaxed text-muted">
         The dissertation defines mean welfare, generalized Gini welfare, and Rawlsian maximin over individual utilities. Those formulas are not copied onto this page.
       </p>
     </details>
@@ -114,10 +114,28 @@ const thesisReady = publicAssetExists(profile.thesisPath);
     <SectionHeading
       eyebrow="Experiment explorer"
       title="Five ways of asking the same question"
-      lede="Each clip is a selected representative episode. Aggregate comparisons across 12 seeds stay outside these animations."
+      lede="Each clip is one representative episode, shown until the vehicles have joined the mainline. The 12-seed comparisons are in the figures below, not in these animations."
     />
     <div class="mt-8">
       <ExperimentExplorer />
+    </div>
+  </section>
+
+  <section id="results" class="mx-auto max-w-6xl px-5 py-14 md:px-8">
+    <SectionHeading
+      eyebrow="Dissertation figures"
+      title="The 12-seed results, as plotted in the thesis"
+      lede="These are the aggregate figures. They are not inferred from the single episodes above."
+    />
+    <div class="mt-8 space-y-8">
+      {
+        thesisFigures.map((figure) => (
+          <figure class="overflow-hidden rounded-[1.4rem] border border-line bg-panel">
+            <img src={figure.src} alt={figure.alt} class="w-full bg-white" loading="lazy" decoding="async" />
+            <figcaption class="px-5 py-4 text-lg leading-relaxed text-muted">{figure.caption}</figcaption>
+          </figure>
+        ))
+      }
     </div>
   </section>
 
@@ -126,16 +144,16 @@ const thesisReady = publicAssetExists(profile.thesisPath);
     <div class="mt-8 grid gap-4 md:grid-cols-2">
       <article class="rounded-[1.4rem] border border-line bg-panel p-6">
         <h2 class="text-xs uppercase tracking-[0.16em] text-muted">Expected</h2>
-        <p class="mt-4 leading-relaxed">Fair objective → fair behaviour → fair outcome</p>
+        <p class="mt-4 text-lg leading-relaxed">Fair objective → fair behaviour → fair outcome</p>
       </article>
       <article class="rounded-[1.4rem] border border-line bg-accent-soft p-6">
         <h2 class="text-xs uppercase tracking-[0.16em] text-accent">Observed</h2>
-        <p class="mt-4 leading-relaxed">
+        <p class="mt-4 text-lg leading-relaxed">
           Fair objective → limited or unstable local influence → inconsistent final welfare improvement
         </p>
       </article>
     </div>
-    <p class="mt-6 max-w-3xl text-base leading-relaxed text-muted">
+    <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
       This is not a claim that social-welfare optimisation is generally ineffective. In this decentralised setting, the aggregation rule alone was too indirect to reliably produce stable redistribution.
     </p>
     <ol class="mt-10 grid gap-5">
@@ -145,7 +163,7 @@ const thesisReady = publicAssetExists(profile.thesisPath);
             <span class="display text-3xl text-accent">{item.n}</span>
             <div>
               <h3 class="display text-2xl">{item.title}</h3>
-              <p class="mt-2 max-w-3xl leading-relaxed text-muted">{item.text}</p>
+              <p class="mt-2 max-w-3xl text-lg leading-relaxed text-muted">{item.text}</p>
             </div>
           </li>
         ))
@@ -165,14 +183,14 @@ const thesisReady = publicAssetExists(profile.thesisPath);
     <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
       {rigour.map((item) => <MetricChip value={item.value} label={item.label} />)}
     </div>
-    <p class="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+    <p class="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
       Individual evaluation episodes were not treated as independent training replications. Intervals come from differences between the 12 training seeds.
     </p>
   </section>
 
   <section class="mx-auto max-w-6xl px-5 py-12 md:px-8">
     <SectionHeading title="Limitations" />
-    <ul class="mt-6 max-w-3xl space-y-3 text-muted">
+    <ul class="mt-6 max-w-3xl space-y-3 text-lg text-muted">
       {limitations.map((item) => <li class="border-l border-line pl-4">{item}</li>)}
     </ul>
   </section>
@@ -181,11 +199,11 @@ const thesisReady = publicAssetExists(profile.thesisPath);
     <blockquote class="display max-w-4xl text-3xl leading-snug md:text-4xl">
       Fairness is not only an objective-function problem. It is also an information, credit-assignment, and mechanism-design problem.
     </blockquote>
-    <p class="mt-6 max-w-3xl leading-relaxed text-muted">
+    <p class="mt-6 max-w-3xl text-lg leading-relaxed text-muted">
       This project shifted my interest from choosing a “fair” objective toward understanding how individual-level signals actually enter algorithmic decisions and become — or fail to become — collective outcomes.
     </p>
     <h2 class="display mt-12 text-3xl">Where I want to go next</h2>
-    <p class="mt-4 max-w-3xl leading-relaxed text-muted">
+    <p class="mt-4 max-w-3xl text-lg leading-relaxed text-muted">
       This work made me increasingly interested in how AI systems aggregate signals from multiple individuals. I am particularly interested in human-in-the-loop settings where collective decisions, consensus, or rankings should emerge from human interaction rather than from a single predefined objective.
     </p>
     <div class="mt-8">

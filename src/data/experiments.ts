@@ -25,7 +25,7 @@ export const experiments: Experiment[] = [
     videoPath: "/videos/exp01-baseline.webp",
     posterPath: "/images/research/fair-marl/exp01-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
-    metadata: "Exact H1 replay · seed 920101 · scenario H1_00159 · steps 10–30",
+    metadata: "Exact H1 replay · seed 920101 · scenario H1_00159 · selected steps 10–30, then the same replay continues through the merge.",
   },
   {
     id: "exp02",
@@ -39,7 +39,7 @@ export const experiments: Experiment[] = [
     posterPath: "/images/research/fair-marl/exp02-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata:
-      "Exact H1 replay · seed 920101 · scenario H1_00159 · same scene as EXP01. This clip does not show why the condition failed to improve fairness.",
+      "Exact H1 replay · seed 920101 · scenario H1_00159 · selected from step 42. The same replay is shown through the merge. This clip does not show why the condition failed to improve fairness.",
   },
   {
     id: "exp03",
@@ -53,7 +53,7 @@ export const experiments: Experiment[] = [
     posterPath: "/images/research/fair-marl/exp03-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata:
-      "Exact H1 replay · seed 920105 · scenario H1_00062 · selected event at step 19 (3.8 s). One episode is not aggregate causal evidence.",
+      "Exact H1 replay · seed 920105 · scenario H1_00062 · selected event at step 19. The animation then continues until the vehicles have merged.",
   },
   {
     id: "exp04",
@@ -66,7 +66,7 @@ export const experiments: Experiment[] = [
     videoPath: "/videos/exp04-dws.webp",
     posterPath: "/images/research/fair-marl/exp04-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
-    metadata: "Exact H1 replay · seed 910101 · scenario H1_00012 · shared signal across active agents.",
+    metadata: "Exact H1 replay · seed 910101 · scenario H1_00012 · same road scale as the other clips, shown through the merge.",
   },
   {
     id: "exp05",
@@ -80,6 +80,6 @@ export const experiments: Experiment[] = [
     posterPath: "/images/research/fair-marl/exp05-keyframe.png",
     caveat: "Mechanism reconstruction · illustrative only",
     metadata:
-      "Reconstructed mechanism overlay, not an exact formal environment replay · seed 900104 · scenario H1_00005.",
+      "Reconstructed mechanism overlay, not an exact formal environment replay · seed 900104 · scenario H1_00005 · shown through the merge.",
   },
 ];

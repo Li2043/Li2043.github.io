@@ -41,6 +41,45 @@ export const pipeline = [
   "Task + welfare evaluation",
 ] as const;
 
+export const thesisFigures = [
+  {
+    src: "/images/research/fair-marl/figures/exp01_braking_vs_burden.png",
+    alt: "Seed-level braking rates and mobility burden for Slow and Fast vehicles under Baseline",
+    caption:
+      "Dissertation Figure 4.5. Under Baseline, Slow vehicles brake more often, while Fast vehicles carry more requirement-relative mobility burden. Each point is one training seed.",
+  },
+  {
+    src: "/images/research/fair-marl/figures/exp01_fast_worstoff.png",
+    alt: "Fast-vehicle share of worst-off outcomes across Baseline training seeds",
+    caption:
+      "Dissertation Figure 4.4. Fast vehicles account for most identifiable worst-off outcomes. The dashed line is the 50% reference.",
+  },
+  {
+    src: "/images/research/fair-marl/figures/exp02_swf_paired_effects.png",
+    alt: "Paired welfare effects of Mean, GGI, and Maximin relative to Baseline",
+    caption:
+      "Dissertation Figure 4.7. Seed-paired changes in worst-off utility and Utility Gini for Mean, generalized Gini, and Maximin against the matched Baseline. Intervals that include zero are not read as an improvement.",
+  },
+  {
+    src: "/images/research/fair-marl/figures/exp03_wsc_recovery.png",
+    alt: "Welfare-gap recovery after targeted yielding under original observations and WSC",
+    caption:
+      "Dissertation Figure 4.8. After a targeted yield, local welfare-gap recovery is higher under welfare-state communication than under the original observations. That local change is separate from the final welfare distribution.",
+  },
+  {
+    src: "/images/research/fair-marl/figures/exp04_dws_single_checkpoint_effects.png",
+    alt: "Seed-paired DWS changes in worst-off utility and Utility Gini",
+    caption:
+      "Dissertation Figure 4.10. Dense welfare shaping at the 2.0M checkpoint. The average can move in a favourable direction while individual seeds move both ways.",
+  },
+  {
+    src: "/images/research/fair-marl/figures/exp05_primary_paired_outcomes.png",
+    alt: "Seed-paired EXP05 outcomes for worst-off utility and Utility Gini",
+    caption:
+      "Dissertation Figure 4.13. Paired 3.0M versus 3.8M outcomes for the mechanism condition. All 12 seeds are shown. The interval for worst-off utility crosses zero.",
+  },
+] as const;
+
 export const findings = [
   {
     n: "01",

@@ -7,13 +7,13 @@ import { pipeline } from "../data/research";
     pipeline.map((step, i) => (
       <li class="relative rounded-2xl border border-line bg-panel px-4 py-4">
         <span class="text-xs tabular-nums text-accent">{String(i + 1).padStart(2, "0")}</span>
-        <p class:list={["mt-2 text-base leading-snug", i === 5 || i === 6 ? "font-semibold text-ink" : "text-ink"]}>
+        <p class:list={["mt-2 text-lg leading-snug", i === 5 || i === 6 ? "font-semibold text-ink" : "text-ink"]}>
           {step}
         </p>
       </li>
     ))
   }
 </ol>
-<p class="mt-5 max-w-3xl text-base leading-relaxed text-muted">
+<p class="mt-5 max-w-3xl text-lg leading-relaxed text-muted">
   Uncertainty was evaluated at the training-seed level, rather than treating individual episodes as independent training replications.
 </p>
