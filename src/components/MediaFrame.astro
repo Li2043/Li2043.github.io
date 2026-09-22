@@ -20,12 +20,23 @@ const {
   eager = false,
 } = Astro.props;
 const playNow = Boolean(videoSrc && autoplay && !managed);
+const animatedImage = Boolean(videoSrc && /\.(webp|gif)$/i.test(videoSrc));
 ---
 
 <figure class="media-frame relative overflow-hidden rounded-[1.4rem] border border-line bg-panel shadow-[0_18px_50px_-36px_rgba(28,33,40,0.55)]">
   <div class="aspect-video w-full">
     {
-      videoSrc ? (
+      animatedImage && videoSrc ? (
+        <img
+          src={playNow ? videoSrc : poster}
+          data-src={videoSrc}
+          data-poster={poster}
+          alt={alt}
+          width="1280"
+          height="720"
+          decoding="async"
+        />
+      ) : videoSrc ? (
         <video
           class="block"
           poster={poster}

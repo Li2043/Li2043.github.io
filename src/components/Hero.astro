@@ -3,7 +3,7 @@ import { profile } from "../data/profile";
 import { publicAssetExists } from "../lib/assets";
 import MediaFrame from "./MediaFrame.astro";
 
-const video = "/videos/exp01-baseline.mp4";
+const video = "/videos/exp01-baseline.webp";
 const poster = "/images/research/fair-marl/exp01-keyframe.png";
 const hasVideo = publicAssetExists(video);
 const cvReady = publicAssetExists(profile.cvPath);
@@ -13,7 +13,7 @@ const cvReady = publicAssetExists(profile.cvPath);
   <div class="reveal">
     <p class="text-xs font-medium uppercase tracking-[0.18em] text-accent">Li Shen</p>
     <h1 class="display mt-4 text-5xl text-ink md:text-6xl lg:text-7xl">Li Shen</h1>
-    <p class="mt-4 text-sm text-muted md:text-base">{profile.descriptor}</p>
+    <p class="mt-4 text-base text-muted md:text-lg">{profile.descriptor}</p>
     <p class="mt-6 max-w-xl text-lg leading-relaxed text-ink/90 md:text-xl">{profile.statement}</p>
     <div class="mt-8 flex flex-wrap items-center gap-3">
       <a href="/research/fair-marl/" class="rounded-full bg-accent px-5 py-2.5 text-sm text-white hover:bg-[#243462]">

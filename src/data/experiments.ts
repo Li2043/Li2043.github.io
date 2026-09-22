@@ -22,7 +22,7 @@ export const experiments: Experiment[] = [
     description:
       "In the selected Baseline episode, Slow vehicles can brake while remaining near their mobility target, while Fast vehicles accumulate greater target-relative burden. The merge still succeeds.",
     evidenceType: "exact-replay",
-    videoPath: "/videos/exp01-baseline.mp4",
+    videoPath: "/videos/exp01-baseline.webp",
     posterPath: "/images/research/fair-marl/exp01-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata: "Exact H1 replay · seed 920101 · scenario H1_00159 · steps 10–30",
@@ -35,7 +35,7 @@ export const experiments: Experiment[] = [
     description:
       "The Maximin branch focuses the welfare objective on the worst-off final utility. This episode illustrates that the welfare term is applied at episode termination.",
     evidenceType: "exact-replay",
-    videoPath: "/videos/exp02-maximin.mp4",
+    videoPath: "/videos/exp02-maximin.webp",
     posterPath: "/images/research/fair-marl/exp02-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata:
@@ -49,7 +49,7 @@ export const experiments: Experiment[] = [
     description:
       "WSC exposes welfare-history information to the policy. The selected targeted-yield event shows an ego vehicle braking when a visible neighbour is disadvantaged, followed by local welfare-gap recovery.",
     evidenceType: "exact-replay",
-    videoPath: "/videos/exp03-wsc.mp4",
+    videoPath: "/videos/exp03-wsc.webp",
     posterPath: "/images/research/fair-marl/exp03-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata:
@@ -63,7 +63,7 @@ export const experiments: Experiment[] = [
     description:
       "DWS moves welfare feedback earlier in time, but the signal is shared across active agents. The selected episode illustrates delayed recovery and diffuse credit: agents not directly involved in the local interaction can receive the same welfare signal.",
     evidenceType: "exact-replay",
-    videoPath: "/videos/exp04-dws.mp4",
+    videoPath: "/videos/exp04-dws.webp",
     posterPath: "/images/research/fair-marl/exp04-keyframe.png",
     caveat: "Representative episode · exact replay · illustrative only",
     metadata: "Exact H1 replay · seed 910101 · scenario H1_00012 · shared signal across active agents.",
@@ -76,7 +76,7 @@ export const experiments: Experiment[] = [
     description:
       "EXP05 combines accumulated burden, visible-neighbour comparison, and action-dependent local feedback. The selected visual illustrates how a local burden gap can trigger severity-weighted feedback tied to the ego action.",
     evidenceType: "reconstructed",
-    videoPath: "/videos/exp05-mechanism.mp4",
+    videoPath: "/videos/exp05-mechanism.webp",
     posterPath: "/images/research/fair-marl/exp05-keyframe.png",
     caveat: "Mechanism reconstruction · illustrative only",
     metadata:

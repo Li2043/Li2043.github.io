@@ -47,7 +47,7 @@ const views: View[] = experiments.map((experiment) => ({
             <EvidenceBadge label={item.caveat} tone={item.evidenceType === "reconstructed" ? "reconstructed" : "neutral"} />
             <h3 class="display text-2xl md:text-3xl">{item.researchQuestion}</h3>
             <p class="max-w-3xl leading-relaxed text-muted">{item.description}</p>
-            <p class="text-sm text-muted">{item.metadata}</p>
+            <p class="text-base text-muted">{item.metadata}</p>
           </div>
         </section>
       ))
@@ -74,15 +74,26 @@ const views: View[] = experiments.map((experiment) => ({
       const on = panel.dataset.id === id;
       panel.hidden = !on;
       const video = panel.querySelector("video");
-      if (!video) continue;
-      if (!on) {
-        video.pause();
-        continue;
+      const still = panel.querySelector<HTMLImageElement>("img[data-src]");
+      if (video) {
+        if (!on) {
+          video.pause();
+        } else {
+          const src = video.dataset.src;
+          if (play && src && video.getAttribute("src") !== src) video.src = src;
+          if (play && !reduce && src) video.play().catch(() => undefined);
+          if (!play) video.pause();
+        }
       }
-      const src = video.dataset.src;
-      if (play && src && video.getAttribute("src") !== src) video.src = src;
-      if (play && !reduce && src) video.play().catch(() => undefined);
-      if (!play) video.pause();
+      if (still) {
+        const src = still.dataset.src;
+        const poster = still.dataset.poster;
+        if (!on || !play || reduce) {
+          if (poster) still.src = poster;
+        } else if (src && still.getAttribute("src") !== src) {
+          still.src = src;
+        }
+      }
     }
   }
 
