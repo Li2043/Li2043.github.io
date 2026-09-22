@@ -1,0 +1,73 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import SectionHeading from "../components/SectionHeading.astro";
+import ResearchCard from "../components/ResearchCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { profile } from "../data/profile";
+import { projects } from "../data/projects";
+import { earlier, featured, lenses } from "../data/research";
+---
+
+<BaseLayout
+  title="Li Shen — Human-in-the-loop AI & Collective Decision-Making"
+  description="Academic portfolio of Li Shen, working across human-in-the-loop AI, collective decision-making, fair aggregation, multi-agent systems, and social networks."
+>
+  <Hero />
+
+  <section class="mx-auto max-w-6xl px-5 pb-8 md:px-8" aria-labelledby="lens-heading">
+    <h2 id="lens-heading" class="sr-only">Research lens</h2>
+    <div class="grid gap-4 md:grid-cols-3">
+      {
+        lenses.map((lens, i) => (
+          <article class="rounded-[1.4rem] border border-line bg-panel p-6">
+            <p class="text-xs uppercase tracking-[0.16em] text-accent">0{i + 1}</p>
+            <h3 class="display mt-3 text-2xl">{lens.title}</h3>
+            <p class="mt-3 leading-relaxed text-muted">{lens.text}</p>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="research" class="mx-auto max-w-6xl space-y-6 px-5 py-16 md:px-8">
+    <SectionHeading eyebrow="Research" title="A question about fair coordination" />
+    <ResearchCard
+      featured
+      title={featured.title}
+      description={featured.description}
+      tags={featured.tags}
+      href={featured.href}
+      image="/images/research/fair-marl/exp01-keyframe.png"
+      imageAlt="Keyframe from the Baseline representative merge episode"
+    />
+    <ResearchCard
+      title={earlier.title}
+      description={earlier.description}
+      tags={earlier.tags}
+      href={earlier.href}
+    />
+  </section>
+
+  <section id="background" class="mx-auto max-w-6xl px-5 py-8 md:px-8">
+    <SectionHeading eyebrow="Background" title="Training" />
+    <ol class="mt-8 grid gap-4 md:grid-cols-2">
+      {
+        profile.education.map((item) => (
+          <li class="rounded-[1.4rem] border border-line bg-panel p-6">
+            <p class="text-sm text-accent">{item.years}</p>
+            <p class="display mt-2 text-2xl">{item.degree}</p>
+            <p class="mt-1 text-muted">{item.institution}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section id="projects" class="mx-auto max-w-6xl px-5 py-16 md:px-8">
+    <SectionHeading eyebrow="Selected technical projects" title="Alongside the research" />
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {projects.map((project) => <ProjectCard title={project.title} summary={project.summary} />)}
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,63 @@
+---
+import { nav, profile } from "../data/profile";
+import { publicAssetExists } from "../lib/assets";
+
+const cvReady = publicAssetExists(profile.cvPath);
+const path = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-4 md:px-8">
+    <a href="/" class="display text-xl tracking-tight text-ink">{profile.name}</a>
+
+    <nav class="hidden items-center gap-7 text-[0.95rem] text-muted md:flex" aria-label="Primary">
+      {
+        nav.map((item) => {
+          const isCv = "file" in item && item.file === "cv";
+          const href = isCv && !cvReady ? "/#background" : item.href;
+          const external = "external" in item && item.external;
+          const current = !external && path !== "/" && href.startsWith("/research") && path.startsWith("/research");
+          return (
+            <a
+              href={href}
+              class:list={["transition-colors hover:text-ink", current && "text-ink"]}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              aria-current={current ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <details class="relative md:hidden">
+      <summary
+        class="cursor-pointer list-none rounded-full border border-line px-3 py-1.5 text-sm text-ink [&::-webkit-details-marker]:hidden"
+      >
+        Menu
+      </summary>
+      <nav
+        class="absolute right-0 mt-2 w-52 rounded-2xl border border-line bg-panel p-3 shadow-sm"
+        aria-label="Mobile"
+      >
+        {
+          nav.map((item) => {
+            const isCv = "file" in item && item.file === "cv";
+            const href = isCv && !cvReady ? "/#background" : item.href;
+            const external = "external" in item && item.external;
+            return (
+              <a
+                href={href}
+                class="block rounded-lg px-3 py-2 text-ink hover:bg-accent-soft"
+                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              >
+                {item.label}
+              </a>
+            );
+          })
+        }
+      </nav>
+    </details>
+  </div>
+</header>

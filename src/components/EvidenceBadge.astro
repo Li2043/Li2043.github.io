@@ -1,0 +1,19 @@
+---
+interface Props {
+  label: string;
+  tone?: "neutral" | "reconstructed";
+}
+const { label, tone = "neutral" } = Astro.props;
+---
+
+<p
+  class:list={[
+    "inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs tracking-wide",
+    tone === "reconstructed"
+      ? "border-teal/30 bg-teal-soft text-teal"
+      : "border-line bg-panel text-muted",
+  ]}
+>
+  <span class="h-1.5 w-1.5 rounded-full bg-current" aria-hidden="true"></span>
+  {label}
+</p>

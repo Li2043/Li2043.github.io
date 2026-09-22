@@ -1,0 +1,42 @@
+---
+interface LinkItem {
+  label: string;
+  href: string;
+  external?: boolean;
+  disabled?: boolean;
+  note?: string;
+}
+interface Props {
+  links: LinkItem[];
+}
+const { links } = Astro.props;
+---
+
+<div class="flex flex-wrap items-center gap-3">
+  {
+    links.map((link, i) =>
+      link.disabled ? (
+        <span
+          class="rounded-full border border-dashed border-line px-4 py-2 text-sm text-muted"
+          title={link.note}
+        >
+          {link.label}
+          <span class="sr-only">, not yet available</span>
+        </span>
+      ) : (
+        <a
+          href={link.href}
+          class:list={[
+            "rounded-full px-4 py-2 text-sm transition-colors",
+            i === 0
+              ? "bg-accent text-white hover:bg-[#243462]"
+              : "border border-line bg-panel text-ink hover:border-accent/40",
+          ]}
+          {...(link.external ? { target: "_blank", rel: "noreferrer" } : {})}
+        >
+          {link.label}
+        </a>
+      ),
+    )
+  }
+</div>

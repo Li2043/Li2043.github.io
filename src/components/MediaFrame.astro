@@ -1,0 +1,68 @@
+---
+interface Props {
+  videoSrc?: string | null;
+  poster: string;
+  alt: string;
+  caption?: string;
+  comingSoon?: boolean;
+  autoplay?: boolean;
+  managed?: boolean;
+  eager?: boolean;
+}
+const {
+  videoSrc = null,
+  poster,
+  alt,
+  caption,
+  comingSoon = false,
+  autoplay = false,
+  managed = false,
+  eager = false,
+} = Astro.props;
+const playNow = Boolean(videoSrc && autoplay && !managed);
+---
+
+<figure class="media-frame relative overflow-hidden rounded-[1.4rem] border border-line bg-panel shadow-[0_18px_50px_-36px_rgba(28,33,40,0.55)]">
+  <div class="aspect-video w-full">
+    {
+      videoSrc ? (
+        <video
+          class="block"
+          poster={poster}
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          src={playNow ? videoSrc : undefined}
+          data-src={videoSrc}
+          autoplay={playNow}
+          aria-label={alt}
+        />
+      ) : (
+        <img
+          src={poster}
+          alt={alt}
+          width="1280"
+          height="720"
+          loading={eager ? "eager" : "lazy"}
+          decoding="async"
+          fetchpriority={eager ? "high" : "auto"}
+        />
+      )
+    }
+  </div>
+  {
+    caption && (
+      <figcaption class="pointer-events-none absolute bottom-4 left-4 max-w-[18rem] rounded-xl border border-white/70 bg-white/85 px-3 py-2 text-xs leading-snug text-ink shadow-sm backdrop-blur-sm">
+        {caption}
+      </figcaption>
+    )
+  }
+  {
+    comingSoon && (
+      <p class="absolute right-4 top-4 rounded-full border border-line bg-paper/90 px-3 py-1 text-[11px] uppercase tracking-[0.14em] text-muted">
+        Video coming soon
+      </p>
+    )
+  }
+</figure>

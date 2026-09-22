@@ -1,0 +1,39 @@
+---
+interface Props {
+  heading: string;
+  text: string;
+  variant: "mean" | "gini" | "maximin";
+}
+const { heading, text, variant } = Astro.props;
+const bars = [72, 58, 46, 34];
+---
+
+<article class="flex h-full flex-col rounded-[1.4rem] border border-line bg-panel p-6">
+  <h3 class="display text-2xl">{heading}</h3>
+  <p class="mt-3 flex-1 leading-relaxed text-muted">{text}</p>
+  <div class="mt-6 flex items-end gap-3" aria-hidden="true">
+    {
+      bars.map((h, i) => {
+        const min = i === bars.length - 1;
+        const giniWeight = (bars.length - i) / bars.length;
+        return (
+          <div class="flex flex-1 flex-col items-center gap-2">
+            <div
+              class:list={[
+                "w-full rounded-t-md",
+                variant === "maximin" && min ? "bg-accent ring-2 ring-accent ring-offset-2 ring-offset-panel" : "bg-accent/80",
+                variant === "gini" && "bg-accent",
+              ]}
+              style={`height:${h}px; opacity:${variant === "gini" ? 0.35 + giniWeight * 0.65 : variant === "maximin" && !min ? 0.28 : 0.85}`}
+            />
+            {variant === "maximin" && min && <span class="text-[10px] uppercase tracking-wider text-accent">Minimum</span>}
+            {variant === "gini" && i === 0 && <span class="text-[10px] uppercase tracking-wider text-muted">Higher rank</span>}
+            {variant === "gini" && min && <span class="text-[10px] uppercase tracking-wider text-accent">Greater weight</span>}
+            {variant === "mean" && <span class="text-[10px] text-muted">U{i + 1}</span>}
+          </div>
+        );
+      })
+    }
+  </div>
+  {variant === "mean" && <p class="mt-3 text-xs text-muted">Equal contribution to the average.</p>}
+</article>

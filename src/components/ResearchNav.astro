@@ -1,0 +1,27 @@
+---
+const items = [
+  { href: "#question", label: "Question" },
+  { href: "#fairness", label: "Fairness" },
+  { href: "#experiments", label: "Experiments" },
+  { href: "#findings", label: "Findings" },
+  { href: "#mechanisms", label: "Mechanisms" },
+  { href: "#reflection", label: "Reflection" },
+];
+---
+
+<nav
+  class="sticky top-[4.25rem] z-30 hidden border-b border-line/80 bg-paper/90 backdrop-blur-md lg:block"
+  aria-label="On this page"
+>
+  <ul class="mx-auto flex max-w-6xl gap-6 px-8 py-3 text-sm text-muted">
+    {
+      items.map((item) => (
+        <li>
+          <a class="hover:text-ink" href={item.href}>
+            {item.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

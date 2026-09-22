@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tags: readonly string[];
+  href: string;
+  image?: string;
+  imageAlt?: string;
+  featured?: boolean;
+}
+const { title, description, tags, href, image, imageAlt = "", featured = false } = Astro.props;
+---
+
+<article
+  class:list={[
+    "group grid overflow-hidden rounded-[1.6rem] border border-line bg-panel transition-transform duration-300 hover:-translate-y-0.5",
+    featured ? "lg:grid-cols-[1.15fr_0.85fr]" : "md:grid-cols-[1fr_0.7fr]",
+  ]}
+>
+  <div class="flex flex-col justify-between gap-8 p-7 md:p-9">
+    <div>
+      <p class="text-xs uppercase tracking-[0.16em] text-accent">{featured ? "Featured research" : "Earlier research"}</p>
+      <h3 class:list={["display mt-3 text-ink", featured ? "text-3xl md:text-4xl" : "text-2xl"]}>
+        <a href={href} class="hover:text-accent">{title}</a>
+      </h3>
+      <p class="mt-4 max-w-xl leading-relaxed text-muted">{description}</p>
+      <ul class="mt-5 flex flex-wrap gap-2">
+        {tags.map((tag) => <li class="rounded-full bg-accent-soft px-3 py-1 text-xs text-accent">{tag}</li>)}
+      </ul>
+    </div>
+    <a href={href} class="text-sm font-medium text-accent underline-offset-4 hover:underline">
+      {featured ? "Explore the research" : "Read the note"}
+    </a>
+  </div>
+  {
+    image && (
+      <a href={href} class="block min-h-56 border-t border-line lg:border-l lg:border-t-0" tabindex="-1" aria-hidden="true">
+        <img src={image} alt={imageAlt} class="h-full w-full object-cover" loading="lazy" decoding="async" />
+      </a>
+    )
+  }
+</article>

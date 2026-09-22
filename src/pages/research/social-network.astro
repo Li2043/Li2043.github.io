@@ -1,0 +1,62 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import CTAGroup from "../../components/CTAGroup.astro";
+---
+
+<BaseLayout
+  title="Online interaction and network position — Li Shen"
+  description="A small-sample course project relating online interaction networks among 17 students to BDI-II depression scores."
+>
+  <article class="mx-auto max-w-3xl px-5 py-16 md:px-8">
+    <p class="text-xs uppercase tracking-[0.16em] text-accent">Independent Course Research · Shanghai University · 2020</p>
+    <h1 class="display mt-4 text-4xl md:text-5xl">Online interaction, network position, and individual outcomes</h1>
+
+    <div class="mt-8 overflow-hidden rounded-[1.4rem] border border-line bg-panel p-6" aria-hidden="true">
+      <svg viewBox="0 0 360 180" class="h-auto w-full text-accent">
+        <g fill="none" stroke="currentColor" stroke-width="1" opacity="0.45">
+          <path d="M60 90 H140 M220 90 H300 M140 90 L180 48 M140 90 L180 132 M220 90 L180 48 M220 90 L180 132" />
+        </g>
+        <g fill="currentColor">
+          <circle cx="60" cy="90" r="7" opacity="0.35" />
+          <circle cx="140" cy="90" r="7" opacity="0.55" />
+          <circle cx="180" cy="48" r="6" opacity="0.35" />
+          <circle cx="180" cy="132" r="6" opacity="0.35" />
+          <circle cx="220" cy="90" r="7" opacity="0.55" />
+          <circle cx="300" cy="90" r="7" opacity="0.35" />
+        </g>
+        <circle cx="180" cy="90" r="9" fill="#246862" />
+        <text x="180" y="164" text-anchor="middle" fill="#5d6672" font-size="11" font-family="Source Sans 3, sans-serif">
+          Schematic bridge position — not the study graph
+        </text>
+      </svg>
+    </div>
+
+    <div class="mt-8 space-y-4 leading-relaxed text-ink/90">
+      <p>
+        The project constructed an undirected weighted interaction network from three months of social-media likes and comments among 17 sociology students.
+      </p>
+      <p>Depression level was measured using the BDI-II questionnaire.</p>
+      <p>The analysis used R to:</p>
+      <ul class="list-disc space-y-1 pl-5 text-muted">
+        <li>visualise the network</li>
+        <li>examine group structure and bridging positions</li>
+        <li>calculate degree centrality</li>
+        <li>calculate closeness centrality</li>
+        <li>calculate betweenness centrality</li>
+        <li>run linear regression</li>
+      </ul>
+      <p>
+        Betweenness centrality showed a statistically significant negative association with depression in this small sample (p &lt; 0.05).
+      </p>
+      <p class="text-muted">The sample is small and the study does not establish causality.</p>
+    </div>
+
+    <blockquote class="display mt-10 text-2xl leading-snug">
+      This project introduced me to a question that still interests me: how micro-level interactions and individual positions relate to macro-level network structure and collective patterns.
+    </blockquote>
+
+    <div class="mt-10">
+      <CTAGroup links={[{ label: "Back to homepage", href: "/" }]} />
+    </div>
+  </article>
+</BaseLayout>

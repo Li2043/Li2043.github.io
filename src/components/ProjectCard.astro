@@ -1,0 +1,12 @@
+---
+interface Props {
+  title: string;
+  summary: string;
+}
+const { title, summary } = Astro.props;
+---
+
+<article class="rounded-2xl border border-line bg-panel px-5 py-5 transition-colors hover:border-accent/30">
+  <h3 class="display text-xl">{title}</h3>
+  <p class="mt-2 text-sm text-muted">{summary}</p>
+</article>

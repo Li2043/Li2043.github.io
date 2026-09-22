@@ -1,0 +1,26 @@
+---
+interface Props {
+  id: string;
+  code: string;
+  label: string;
+  selected: boolean;
+}
+const { id, code, label, selected } = Astro.props;
+---
+
+<button
+  type="button"
+  role="tab"
+  id={`tab-${id}`}
+  data-id={id}
+  aria-controls={`panel-${id}`}
+  aria-selected={selected ? "true" : "false"}
+  tabindex={selected ? 0 : -1}
+  class:list={[
+    "flex min-w-[11rem] shrink-0 flex-col items-start rounded-2xl border px-4 py-3 text-left transition-colors lg:min-w-0 lg:w-full",
+    selected ? "border-accent bg-accent-soft text-ink" : "border-transparent text-muted hover:border-line hover:bg-panel",
+  ]}
+>
+  <span class="text-[11px] uppercase tracking-[0.14em]">{code}</span>
+  <span class="mt-1 text-sm font-medium text-ink">{label}</span>
+</button>

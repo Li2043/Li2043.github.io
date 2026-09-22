@@ -1,0 +1,52 @@
+---
+import { profile } from "../data/profile";
+import { publicAssetExists } from "../lib/assets";
+
+const cvReady = publicAssetExists(profile.cvPath);
+---
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 md:flex-row md:items-end md:justify-between md:px-8">
+    <div>
+      <p class="display text-2xl">{profile.name}</p>
+      <p class="mt-2 max-w-md text-sm text-muted">
+        Human-in-the-loop AI, collective decision-making, and fair aggregation.
+      </p>
+    </div>
+    <ul class="flex flex-wrap gap-x-5 gap-y-2 text-sm">
+      <li>
+        {
+          profile.email ? (
+            <a class="text-ink underline-offset-4 hover:underline" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
+          ) : (
+            <span class="text-muted" title="No public email is listed yet">Email</span>
+          )
+        }
+      </li>
+      <li>
+        <a class="text-ink underline-offset-4 hover:underline" href={profile.github} target="_blank" rel="noreferrer">
+          GitHub
+        </a>
+      </li>
+      <li>
+        <a class="text-ink underline-offset-4 hover:underline" href={profile.linkedin} target="_blank" rel="noreferrer">
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        {
+          cvReady ? (
+            <a class="text-ink underline-offset-4 hover:underline" href={profile.cvPath}>
+              CV
+            </a>
+          ) : (
+            <span class="text-muted" title="Add public/docs/Li_Shen_Academic_CV.pdf">CV not yet added</span>
+          )
+        }
+      </li>
+    </ul>
+  </div>
+  <p class="mx-auto max-w-6xl px-5 pb-8 text-xs text-muted md:px-8">Built with Astro.</p>
+</footer>
